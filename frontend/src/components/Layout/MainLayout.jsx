@@ -95,7 +95,7 @@ const menuItems = [
     children: [
       { key: '/pos-sync/status', label: <Link to="/pos-sync/status">Sync Status</Link> },
       { key: '/pos-sync/logs', label: <Link to="/pos-sync/logs">Sync Logs</Link> },
-      { key: '/pos-sync/mapping', label: <Link to="/pos-sync/mapping">Data Mapping</Link> },
+      { key: '/pos-sync/data-mapping', label: <Link to="/pos-sync/data-mapping">Data Mapping</Link> },
       { key: '/pos-sync/settings', label: <Link to="/pos-sync/settings">Sync Settings</Link> },
     ],
   },
@@ -108,7 +108,7 @@ const menuItems = [
       { key: '/sales/orders', label: <Link to="/sales/orders">Sales Orders</Link> },
       { key: '/sales/quotations', label: <Link to="/sales/quotations">Quotations</Link> },
       { key: '/sales/returns', label: <Link to="/sales/returns">Returns & Refunds</Link> },
-      { key: '/sales/pricing', label: <Link to="/sales/pricing">Pricing & Discounts</Link> },
+      { key: '/sales/discounts', label: <Link to="/sales/discounts">Pricing & Discounts</Link> },
     ],
   },
   {

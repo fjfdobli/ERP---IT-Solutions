@@ -3,9 +3,32 @@ import { Form, Input, Button, Card, Typography, Checkbox, App } from 'antd';
 import { UserOutlined, LockOutlined } from '@ant-design/icons';
 import { useNavigate } from 'react-router-dom';
 import { useAuthStore } from '../store';
-import { authApi } from '../api';
 
 const { Title, Text } = Typography;
+
+// Static user data for development
+const STATIC_USERS = [
+  {
+    id: 1,
+    username: 'admin',
+    password: 'password',
+    email: 'admin@erp.com',
+    first_name: 'System',
+    last_name: 'Administrator',
+    role: { id: 1, name: 'Administrator' },
+    is_active: true,
+  },
+  {
+    id: 2,
+    username: 'manager',
+    password: 'password',
+    email: 'manager@erp.com',
+    first_name: 'Branch',
+    last_name: 'Manager',
+    role: { id: 2, name: 'Manager' },
+    is_active: true,
+  },
+];
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
@@ -15,23 +38,31 @@ const Login = () => {
 
   const onFinish = async (values) => {
     setLoading(true);
-    try {
-      const response = await authApi.login(values.username, values.password);
+    
+    // Simulate network delay
+    await new Promise(resolve => setTimeout(resolve, 500));
+    
+    // Find user in static data
+    const user = STATIC_USERS.find(
+      u => u.username === values.username && u.password === values.password
+    );
+    
+    if (user) {
+      // Create mock tokens
+      const mockAccessToken = `mock_access_token_${user.id}_${Date.now()}`;
+      const mockRefreshToken = `mock_refresh_token_${user.id}_${Date.now()}`;
       
-      if (response.success && response.data) {
-        const { access_token, refresh_token, user } = response.data;
-        setAuth(access_token, refresh_token, user);
-        message.success('Login successful!');
-        navigate('/');
-      } else {
-        message.error(response.message || 'Login failed');
-      }
-    } catch (error) {
-      console.error('Login error:', error);
-      message.error(error.response?.data?.message || 'Login failed. Please check your credentials.');
-    } finally {
-      setLoading(false);
+      // Remove password from user object before storing
+      const { password: _password, ...userWithoutPassword } = user;
+      
+      setAuth(mockAccessToken, mockRefreshToken, userWithoutPassword);
+      message.success('Login successful!');
+      navigate('/');
+    } else {
+      message.error('Invalid username or password');
     }
+    
+    setLoading(false);
   };
 
   return (
@@ -129,8 +160,8 @@ const Login = () => {
         </Form>
 
         <div style={{ textAlign: 'center', marginTop: 24 }}>
-          <Text type="secondary">
-            Demo: admin / admin123
+          <Text type="secondary" style={{ fontSize: 12 }}>
+            Available users: admin, manager (password: password)
           </Text>
         </div>
       </Card>

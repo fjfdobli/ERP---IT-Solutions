@@ -3,7 +3,18 @@ import { MainLayout } from '../components/Layout';
 import { ProtectedRoute } from '../components/Auth';
 import { Login, Dashboard, Users, Roles } from '../pages';
 import ComingSoon from '../pages/ComingSoon';
+import { ProductList, ProductCategories, ProductBrands, UnitsOfMeasure } from '../pages/products';
+import { StockLevels, StockMovements, StockTransfers, StockAdjustments, StockCounts } from '../pages/inventory';
+import { SalesTransactions, SalesOrders, SalesReturns, Discounts } from '../pages/sales';
+import { PurchaseOrders, GoodsReceiving, Suppliers } from '../pages/purchasing';
+import { Customers, CustomerTypes, CreditAccounts, LoyaltyProgram } from '../pages/customers';
+import { Branches, Warehouses } from '../pages/branches';
+import { Employees, Departments, Attendance, Payroll } from '../pages/hr';
+import { FinanceOverview, AccountsReceivable, AccountsPayable, BankReconciliation } from '../pages/finance';
+import { SalesReports, InventoryReports, FinancialReports, CustomReports } from '../pages/reports';
+import { CashRegisters, Shifts, PettyCash } from '../pages/cash';
 
+import { SyncStatus, SyncLogs, SyncSettings, DataMapping } from '../pages/pos';
 const router = createBrowserRouter([
   {
     path: '/login',
@@ -45,156 +56,160 @@ const router = createBrowserRouter([
       // Products
       {
         path: 'products',
-        element: <ComingSoon title="All Products" />,
+        element: <ProductList />,
       },
       {
         path: 'products/categories',
-        element: <ComingSoon title="Product Categories" />,
+        element: <ProductCategories />,
       },
       {
         path: 'products/brands',
-        element: <ComingSoon title="Brands" />,
+        element: <ProductBrands />,
       },
       {
         path: 'products/units',
-        element: <ComingSoon title="Units of Measure" />,
+        element: <UnitsOfMeasure />,
       },
       // Inventory
       {
         path: 'inventory/stock',
-        element: <ComingSoon title="Stock Levels" />,
+        element: <StockLevels />,
       },
       {
         path: 'inventory/movements',
-        element: <ComingSoon title="Stock Movements" />,
+        element: <StockMovements />,
       },
       {
         path: 'inventory/transfers',
-        element: <ComingSoon title="Stock Transfers" />,
+        element: <StockTransfers />,
       },
       {
         path: 'inventory/adjustments',
-        element: <ComingSoon title="Stock Adjustments" />,
+        element: <StockAdjustments />,
       },
       {
         path: 'inventory/counts',
-        element: <ComingSoon title="Stock Counts" />,
+        element: <StockCounts />,
       },
       // Sales
       {
         path: 'sales/transactions',
-        element: <ComingSoon title="Sales Transactions" />,
+        element: <SalesTransactions />,
       },
       {
         path: 'sales/orders',
-        element: <ComingSoon title="Sales Orders" />,
+        element: <SalesOrders />,
+      },
+      {
+        path: 'sales/quotations',
+        element: <ComingSoon title="Quotations" />,
       },
       {
         path: 'sales/returns',
-        element: <ComingSoon title="Returns & Refunds" />,
+        element: <SalesReturns />,
       },
       {
         path: 'sales/discounts',
-        element: <ComingSoon title="Discounts & Promotions" />,
+        element: <Discounts />,
       },
       // Purchasing
       {
         path: 'purchasing/orders',
-        element: <ComingSoon title="Purchase Orders" />,
+        element: <PurchaseOrders />,
       },
       {
         path: 'purchasing/receiving',
-        element: <ComingSoon title="Goods Receiving" />,
+        element: <GoodsReceiving />,
       },
       {
         path: 'purchasing/suppliers',
-        element: <ComingSoon title="Suppliers" />,
+        element: <Suppliers />,
       },
       // Customers
       {
         path: 'customers',
-        element: <ComingSoon title="All Customers" />,
+        element: <Customers />,
       },
       {
         path: 'customers/types',
-        element: <ComingSoon title="Customer Types" />,
+        element: <CustomerTypes />,
       },
       {
         path: 'customers/credits',
-        element: <ComingSoon title="Credit Accounts" />,
+        element: <CreditAccounts />,
       },
       {
         path: 'customers/loyalty',
-        element: <ComingSoon title="Loyalty Program" />,
+        element: <LoyaltyProgram />,
       },
       // Branches
       {
         path: 'branches',
-        element: <ComingSoon title="All Branches" />,
+        element: <Branches />,
       },
       {
         path: 'branches/warehouses',
-        element: <ComingSoon title="Warehouses" />,
+        element: <Warehouses />,
       },
       // Cash Management
       {
         path: 'cash/registers',
-        element: <ComingSoon title="Cash Registers" />,
+        element: <CashRegisters />,
       },
       {
         path: 'cash/shifts',
-        element: <ComingSoon title="Shifts" />,
+        element: <Shifts />,
       },
       {
         path: 'cash/petty',
-        element: <ComingSoon title="Petty Cash" />,
+        element: <PettyCash />,
       },
       // Finance
       {
         path: 'finance/overview',
-        element: <ComingSoon title="Finance Overview" />,
+        element: <FinanceOverview />,
       },
       {
         path: 'finance/receivables',
-        element: <ComingSoon title="Accounts Receivable" />,
+        element: <AccountsReceivable />,
       },
       {
         path: 'finance/payables',
-        element: <ComingSoon title="Accounts Payable" />,
+        element: <AccountsPayable />,
       },
       {
         path: 'finance/bank',
-        element: <ComingSoon title="Bank Reconciliation" />,
+        element: <BankReconciliation />,
       },
       // Reports
       {
         path: 'reports/sales',
-        element: <ComingSoon title="Sales Reports" />,
+        element: <SalesReports />,
       },
       {
         path: 'reports/inventory',
-        element: <ComingSoon title="Inventory Reports" />,
+        element: <InventoryReports />,
       },
       {
         path: 'reports/financial',
-        element: <ComingSoon title="Financial Reports" />,
+        element: <FinancialReports />,
       },
       {
         path: 'reports/hr',
-        element: <ComingSoon title="HR Reports" />,
+        element: <CustomReports />,
       },
       {
         path: 'reports/analytics',
-        element: <ComingSoon title="Analytics" />,
+        element: <CustomReports />,
       },
       // Human Resources
       {
         path: 'hr/employees',
-        element: <ComingSoon title="Employees" />,
+        element: <Employees />,
       },
       {
         path: 'hr/departments',
-        element: <ComingSoon title="Departments" />,
+        element: <Departments />,
       },
       {
         path: 'hr/positions',
@@ -202,11 +217,11 @@ const router = createBrowserRouter([
       },
       {
         path: 'hr/attendance',
-        element: <ComingSoon title="Attendance" />,
+        element: <Attendance />,
       },
       {
         path: 'hr/payroll',
-        element: <ComingSoon title="Payroll" />,
+        element: <Payroll />,
       },
       {
         path: 'hr/leave',
@@ -274,15 +289,19 @@ const router = createBrowserRouter([
       // POS Sync
       {
         path: 'pos-sync/status',
-        element: <ComingSoon title="Sync Status" />,
+        element: <SyncStatus />,
       },
       {
         path: 'pos-sync/logs',
-        element: <ComingSoon title="Sync Logs" />,
+        element: <SyncLogs />,
       },
       {
         path: 'pos-sync/settings',
-        element: <ComingSoon title="Sync Settings" />,
+        element: <SyncSettings />,
+      },
+      {
+        path: 'pos-sync/data-mapping',
+        element: <DataMapping />,
       },
       // Documents
       {
