@@ -2,7 +2,6 @@ const express = require('express');
 const pool = require('../db/legacy');
 const router = express.Router();
 
-// Allowed tables must be set in .env as POS_ALLOWED_TABLES=table1,table2
 const allowed = (process.env.POS_ALLOWED_TABLES || '')
   .split(',')
   .map(s => s.trim())
@@ -15,7 +14,7 @@ router.get('/table/:name', async (req, res) => {
   }
 
   try {
-    const [rows] = await pool.query(`SELECT * FROM \`${table}\` LIMIT 100`);
+    const [rows] = await pool.query(`SELECT * FROM \`${table}\` LIMIT 1000`);
     res.json({ rows });
   } catch (err) {
     console.error('POS query error:', err);
